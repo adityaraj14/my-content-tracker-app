@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "mycontentrackerapp",
-    "slug": "mycontentrackerapp",
+    "name": "my-content-tracker-app",
+    "slug": "my-content-tracker-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
