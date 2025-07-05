@@ -6,7 +6,6 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
 }
 
 datasource db {
@@ -23,8 +22,8 @@ model User {
   lists        List[]
   reviews      Review[]
   activities   Activity[]
-  followers    Follow[]  @relation("Followed", references: [id])
-  following    Follow[]  @relation("Follower", references: [id])
+  followers    Follow[]  @relation("Followed")
+  following    Follow[]  @relation("Follower")
 }
 
 model List {

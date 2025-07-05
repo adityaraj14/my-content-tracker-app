@@ -96,3 +96,39 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+# Local Development: Start Database and Backend Together
+
+You can use the following command to start both the PostgreSQL database (Docker) and the NestJS backend server:
+
+```sh
+# From the project root
+# Start the database (if not already running) and then the backend server
+(docker start content-tracker-postgres || docker run --name content-tracker-postgres -e POSTGRES_PASSWORD=<your_password> -e POSTGRES_USER=<your_user> -e POSTGRES_DB=content_tracker -p <your_port>:5432 -d postgres) && cd backend && npm run start:dev
+```
+
+- Replace `<your_user>`, `<your_password>`, and `<your_port>` with your own values.
+- Set these values in your `backend/.env` file as well:
+  ```
+  DATABASE_URL="postgresql://<your_user>:<your_password>@localhost:<your_port>/content_tracker"
+  ```
+- **Note:** The port in your Docker command (`-p <your_port>:5432`) and in your `DATABASE_URL` must match.
+- This command will start the DB if it exists, or create and start it if it doesn't.
+- Then it will start the backend server in development mode.
+
+---
+
+# Exploring the Database with Prisma Studio
+
+You can visually explore and manage your local database using Prisma Studio:
+
+```sh
+cd backend
+npx prisma studio
+```
+
+- This will open Prisma Studio in your browser at http://localhost:5555
+- You can view, add, edit, and delete records in all tables.
+- Useful for debugging, seeding, and inspecting your data during development.
+
+---

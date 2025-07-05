@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "924cd264-1e5a-4bc6-89f3-3fc670815412",
+		"name": "Content Tracker App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44029725",
+		"_collection_link": "https://adityarajshrivastava.postman.co/workspace/Aditya-Raj-Shrivastava's-Worksp~95b09d81-65c6-4ba7-8da5-f91438af6d56/collection/44029725-924cd264-1e5a-4bc6-89f3-3fc670815412?action=share&source=collection_link&creator=44029725"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Data Sources",
+			"item": [
+				{
+					"name": "TMDb",
+					"item": [
+						{
+							"name": "Search TV show",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.themoviedb.org/3/search/tv?api_key={{tmdb_api_key}}&query=\"Game of thrones\"",
+									"protocol": "https",
+									"host": [
+										"api",
+										"themoviedb",
+										"org"
+									],
+									"path": [
+										"3",
+										"search",
+										"tv"
+									],
+									"query": [
+										{
+											"key": "api_key",
+											"value": "{{tmdb_api_key}}"
+										},
+										{
+											"key": "query",
+											"value": "\"Game of thrones\""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search movie",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.themoviedb.org/3/search/movie?api_key={{tmdb_api_key}}&query=Past lives",
+									"protocol": "https",
+									"host": [
+										"api",
+										"themoviedb",
+										"org"
+									],
+									"path": [
+										"3",
+										"search",
+										"movie"
+									],
+									"query": [
+										{
+											"key": "api_key",
+											"value": "{{tmdb_api_key}}"
+										},
+										{
+											"key": "query",
+											"value": "Past lives"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "AniList",
+					"item": [
+						{
+							"name": "GraphQL API",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "{\n  Media(search: \"One Piece\", type: ANIME) {\n    id\n    title {\n      english\n    }\n    startDate {\n      year\n    }\n    description\n  }\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://graphql.anilist.co",
+									"protocol": "https",
+									"host": [
+										"graphql",
+										"anilist",
+										"co"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
